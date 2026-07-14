@@ -1,50 +1,106 @@
 # Datenschutzerklärung — Notizy
 
-Stand: 01.07.2026
+Stand: 14.07.2026
 
 ## Verantwortlicher
 
 arnollldas
 Kontakt: studio.tablet657@slmail.me
 
-## Welche Daten werden gespeichert?
+## Überblick
 
-Notizy speichert deine Notizen (Titel, Inhalt, Datum, Anpin-Status)
-ausschließlich lokal auf deinem Gerät über die Browser-Speicherfunktion
-(`chrome.storage` bzw. lokaler Browser-Speicher).
+Notizy lässt sich vollständig ohne Konto nutzen (Gäste-Modus). Meldest
+du dich optional mit Google an, kommen zusätzliche Datenverarbeitungen
+hinzu, die unten einzeln erklärt sind. Es gilt: nur was du aktiv
+nutzt (Anmeldung, KI-Verbessern, Feedback), verlässt dein Gerät.
 
-**Es gibt keinen Server und keine Cloud.** Deine Notizen verlassen
-niemals dein Gerät und werden zu keinem Zeitpunkt an den Entwickler,
-Dritte oder einen externen Dienst übertragen.
+## 1. Gäste-Modus (Standard, ohne Anmeldung)
 
-Eine Ausnahme ist die optionale Feedback-Funktion (siehe unten).
+Deine Notizen (Titel, Inhalt, Datum, Anpin-Status) werden ausschließlich
+lokal auf deinem Gerät gespeichert (lokaler Browser-Speicher,
+`localStorage`). Es gibt in diesem Modus keinen Server und keine
+Cloud — die Notizen verlassen niemals dein Gerät. Sie bleiben
+gespeichert, bis du sie selbst löschst oder die Erweiterung
+deinstallierst; beim Deinstallieren werden sie automatisch und
+vollständig vom Gerät entfernt.
 
-## Wofür werden die Daten verwendet?
+## 2. Optionale Google-Anmeldung
 
-Ausschließlich dazu, dir deine Notizen innerhalb der Erweiterung
-anzuzeigen und zu bearbeiten. Es findet keine Auswertung, kein
-Tracking und keine Weitergabe statt.
+Meldest du dich freiwillig mit deinem Google-Konto an, verarbeitet
+Notizy folgende Daten:
 
-## Wie lange werden die Daten gespeichert?
+- **Von Google erhalten:** deine Google-Konto-ID, E-Mail-Adresse,
+  Anzeigename und Profilbild-URL (öffentliche Google-Profildaten,
+  über den offiziellen Google-Anmeldedialog).
+- **Sitzungs-Cookie:** Diese Daten werden signiert in einem Cookie
+  auf dem eigenen Server hinterlegt, damit du angemeldet bleibst
+  (Gültigkeit 30 Tage, technisch notwendig, kein Tracking-Cookie,
+  keine Weitergabe an Werbedienste).
+- **Deine Notizen:** Ab dem Zeitpunkt der Anmeldung werden deine
+  Notizen zusätzlich verschlüsselt übertragen und in einer
+  Cloud-Datenbank (Google Firestore, Google Cloud) unter deiner
+  Google-Konto-ID gespeichert, damit sie geräteübergreifend
+  verfügbar sind. Der eigene Server (gehostet bei Render)
+  vermittelt diese Speicherung.
+- **Zweck:** ausschließlich Anmeldung und geräteübergreifende
+  Synchronisation deiner eigenen Notizen — keine Auswertung, kein
+  Tracking, keine Weitergabe an Dritte außer den genannten
+  technischen Dienstleistern (Google Firestore als Auftrags-
+  verarbeiter, Render als Hosting-Anbieter).
+- **Abmelden** beendet die Sitzung und löscht das Cookie.
+- **„Meine Daten löschen"** im Konto-Menü entfernt deinen
+  gesamten Firestore-Datensatz und beendet die Sitzung unwiderruflich
+  in einem Schritt.
 
-So lange, bis du eine Notiz selbst löschst oder die Erweiterung
-deinstallierst. Beim Deinstallieren der Erweiterung werden alle
-lokal gespeicherten Notizen automatisch und vollständig vom Gerät
-entfernt.
+## 3. KI-Funktion „Verbessern"
 
-## Feedback-Funktion
+Nutzt du den „Verbessern"-Knopf an einer Notiz, wird ausschließlich
+der aktuelle Notiz-Inhalt (auf 6.000 Zeichen begrenzt) an den eigenen
+Server und von dort zur Verarbeitung an den KI-Anbieter Groq
+übermittelt. Der verbesserte Text kommt direkt zurück und wird in
+deine Notiz eingesetzt.
 
-Wenn du über das Feedback-Formular in Notizy eine Nachricht
-absendest, wird ausschließlich der von dir eingegebene Text per
-E-Mail an den Entwickler übermittelt (über den Dienst EmailJS).
-Es werden keine Notizinhalte, keine Nutzungsdaten und keine
-sonstigen persönlichen Daten automatisch mitgeschickt.
+- Funktioniert auch ohne Google-Anmeldung (Gäste-Modus).
+- Der Server selbst speichert den Text nicht dauerhaft, sondern
+  reicht ihn nur zur Verarbeitung weiter.
+- Für die Verarbeitung bei Groq gilt deren eigene Datenschutz-
+  praxis als weiterer Auftragsverarbeiter.
+- Gegen Missbrauch begrenzt (maximal 5 Anfragen pro Minute).
+
+## 4. Feedback-Funktion
+
+Sendest du über das Feedback-Formular eine Nachricht ab, wird
+ausschließlich der von dir eingegebene Text (auf 2.000 Zeichen
+begrenzt) per E-Mail an den Entwickler übermittelt (über den Dienst
+EmailJS). Es werden keine Notizinhalte, keine Nutzungsdaten und
+keine sonstigen persönlichen Daten automatisch mitgeschickt.
+
+## Wie lange werden Daten gespeichert?
+
+- Gäste-Notizen: bis zum eigenen Löschen oder Deinstallieren.
+- Konto-Notizen (Firestore): bis zum eigenen Löschen einzelner
+  Notizen oder bis „Meine Daten löschen" genutzt wird.
+- Sitzungs-Cookie: maximal 30 Tage oder bis zum Abmelden.
+- KI-Verbessern-Text: nicht dauerhaft auf dem eigenen Server
+  gespeichert.
 
 ## Deine Rechte
 
-Da keine Daten außerhalb deines Geräts gespeichert werden, kannst du
-jederzeit selbst und vollständig über deine Daten verfügen — durch
-Löschen einzelner Notizen oder durch Deinstallieren der Erweiterung.
+Du kannst jederzeit selbst über deine Daten verfügen: einzelne
+Notizen löschen, dich abmelden, per „Meine Daten löschen" deinen
+gesamten Cloud-Datensatz entfernen, oder die Erweiterung
+deinstallieren (entfernt alle lokal gespeicherten Gäste-Notizen).
+Für weitergehende Auskunfts-, Berichtigungs- oder Löschanfragen
+wende dich an die unten stehende Kontaktadresse.
+
+## Eingesetzte Dienstleister (Auftragsverarbeiter)
+
+- **Google Firestore / Google Cloud** — Speicherung der Notizen
+  angemeldeter Nutzer.
+- **Render** — Hosting des eigenen Servers.
+- **Groq** — Verarbeitung von Texten für die „Verbessern"-Funktion.
+- **EmailJS** — Versand von Feedback-Nachrichten per E-Mail.
+- **Google Sign-In** — Authentifizierung bei optionaler Anmeldung.
 
 ## Kontakt
 
