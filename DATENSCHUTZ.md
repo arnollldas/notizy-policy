@@ -105,7 +105,7 @@ wende dich an die unten stehende Kontaktadresse.
 - **Google (Firebase Authentication / Google Sign-In)** — Anmeldung
   bei optionaler Nutzung des Kontos.
 - **Vercel** — serverlose Funktionen (Anmelde-Token beim Login und
-  KI-Proxy für „Verbessern").
+  KI-Proxy für „Verbessern"); Verarbeitung in der EU-Region Frankfurt.
 - **Groq** — Verarbeitung von Texten für die „Verbessern"-Funktion.
 - **EmailJS** — Versand von Feedback-Nachrichten per E-Mail.
 

@@ -99,7 +99,7 @@ below.
 - **Google (Firebase Authentication / Google Sign-In)** — authentication
   when optionally using an account.
 - **Vercel** — serverless functions (sign-in token at login and AI
-  proxy for "Enhance").
+  proxy for "Enhance"); processed in the EU region Frankfurt.
 - **Groq** — text processing for the "Enhance" feature.
 - **EmailJS** — sending feedback messages by email.
 
