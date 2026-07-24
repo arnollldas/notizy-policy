@@ -1,6 +1,6 @@
 # Privacy Policy — Notizy
 
-Last updated: 2026-07-14
+Last updated: 2026-07-24
 
 ## Data Controller
 
@@ -31,37 +31,41 @@ the following data:
 - **Received from Google:** your Google account ID, email address,
   display name, and profile picture URL (public Google profile data,
   via the official Google sign-in dialog).
-- **Session cookie:** this data is stored, signed, in a cookie on the
-  developer's own server to keep you signed in (valid for 30 days,
-  technically necessary, not a tracking cookie, never shared with
-  advertising services).
+- **Sign-in / session:** Sign-in is handled by Firebase Authentication
+  (Google). Your signed-in state is kept as a security token locally in
+  your browser — there is no server-side session cookie, no tracking,
+  and it is never shared with advertising services. The token is
+  refreshed automatically in the background while you stay signed in.
 - **Your notes:** once signed in, your notes are additionally
   transmitted and stored in a cloud database (Google Firestore,
   Google Cloud) under your Google account ID, so they sync across
-  devices. The developer's own server (hosted on Render) mediates
-  this storage.
+  devices. The extension communicates directly with Google Firestore;
+  a small serverless function (hosted on Vercel) issues the sign-in
+  token at login.
 - **Purpose:** solely sign-in and cross-device sync of your own
   notes — no analytics, no tracking, no sharing with third parties
-  beyond the listed technical service providers (Google Firestore as
-  processor, Render as hosting provider).
-- **Signing out** ends the session and clears the cookie.
+  beyond the listed technical service providers (Google as processor
+  for Firestore and authentication, Vercel for the serverless function).
+- **Signing out** ends the Firebase session and removes the sign-in
+  token from your browser.
 - **"Delete my data"** in the account menu permanently removes your
   entire Firestore record and ends the session in one step.
 
 ## 3. AI "Enhance" feature
 
 When you use the "Enhance" button on a note, only the current note
-content (capped at 6,000 characters) is sent to the developer's own
-server and forwarded from there to the AI provider Groq for
-processing. The improved text is returned directly and inserted into
-your note.
+content (capped at 6,000 characters) is sent to a serverless function
+(hosted on Vercel) and forwarded from there to the AI provider Groq
+for processing. The improved text is returned directly and inserted
+into your note.
 
-- Works without Google sign-in as well (guest mode).
-- The server does not permanently store the text — it only relays it
-  for processing.
+- Requires a Google sign-in — the feature is available to signed-in
+  users only, to protect AI access from abuse.
+- The serverless function does not permanently store the text — it
+  only relays it for processing.
 - Processing at Groq is subject to Groq's own privacy practices as
   an additional processor.
-- Rate-limited against abuse (maximum 5 requests per minute).
+- Rate-limited against abuse (number of requests per minute is capped).
 
 ## 4. Feedback feature
 
@@ -75,8 +79,10 @@ other personal data are sent automatically.
 - Guest notes: until you delete them or uninstall the extension.
 - Account notes (Firestore): until you delete individual notes or use
   "Delete my data".
-- Session cookie: up to 30 days, or until you sign out.
-- AI "Enhance" text: not permanently stored on the developer's server.
+- Sign-in token in the browser: until you sign out (refreshed
+  automatically while signed in).
+- AI "Enhance" text: not permanently stored, only relayed for
+  processing.
 
 ## Your rights
 
@@ -90,10 +96,12 @@ below.
 
 - **Google Firestore / Google Cloud** — storage of signed-in users'
   notes.
-- **Render** — hosting of the developer's own server.
+- **Google (Firebase Authentication / Google Sign-In)** — authentication
+  when optionally using an account.
+- **Vercel** — serverless functions (sign-in token at login and AI
+  proxy for "Enhance").
 - **Groq** — text processing for the "Enhance" feature.
 - **EmailJS** — sending feedback messages by email.
-- **Google Sign-In** — authentication for optional sign-in.
 
 ## Contact
 
