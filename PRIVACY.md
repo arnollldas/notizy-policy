@@ -1,5 +1,7 @@
 # Privacy Policy — Notizy
 
+> 🇩🇪 Deutschsprachig? Zur [Datenschutzerklärung auf Deutsch](./DATENSCHUTZ.md).
+
 Last updated: 2026-07-24
 
 ## Data Controller

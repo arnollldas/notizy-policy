@@ -1,5 +1,7 @@
 # Datenschutzerklärung — Notizy
 
+> 🇬🇧 English speaker? Read the [Privacy Policy in English](./PRIVACY.md).
+
 Stand: 24.07.2026
 
 ## Verantwortlicher
