@@ -2,7 +2,7 @@
 
 > 🇩🇪 Deutschsprachig? Zur [Datenschutzerklärung auf Deutsch](./DATENSCHUTZ.md).
 
-Last updated: 2026-07-24
+Last updated: 2026-09-26
 
 ## Data Controller
 
@@ -25,7 +25,26 @@ notes never leave your device. They remain stored until you delete
 them yourself or uninstall the extension; uninstalling automatically
 and completely removes them from your device.
 
-## 2. Optional Google sign-in
+## 2. Floating note (pin to screen)
+
+When you pin a note to the screen via the pin button, Notizy shows it as a freely
+movable window floating over whichever webpage you currently have open, regardless of
+which site that is. This technically requires access to every website you visit
+(the "Access your data for all websites" permission).
+
+- **What does NOT happen:** Notizy never reads, stores, or transmits any content of the
+  webpage itself (no text, no form data, no browsing history, no third-party cookies).
+  The floating window is fully technically isolated from the webpage (Shadow DOM) and
+  does not exchange any data with it.
+- **What actually happens:** The pinned note (title, content, color) and which browser
+  tab it is currently shown in are kept locally in your browser's extension storage
+  (`chrome.storage`) — this is exclusively your own note data, the same as in guest mode
+  (section 1), just technically mirrored to another location so the popup and the
+  floating window stay in sync. This data never leaves your device either.
+- If no note is pinned, Notizy does not access the webpage, even though the permission
+  is technically present.
+
+## 3. Optional Google sign-in
 
 If you choose to sign in with your Google account, Notizy processes
 the following data:
@@ -53,7 +72,7 @@ the following data:
 - **"Delete my data"** in the account menu permanently removes your
   entire Firestore record and ends the session in one step.
 
-## 3. AI "Enhance" feature
+## 4. AI "Enhance" feature
 
 When you use the "Enhance" button on a note, only the current note
 content (capped at 6,000 characters) is sent to a serverless function
@@ -69,7 +88,7 @@ into your note.
   an additional processor.
 - Rate-limited against abuse (number of requests per minute is capped).
 
-## 4. Feedback feature
+## 5. Feedback feature
 
 If you submit a message through the feedback form, only the text you
 entered (capped at 2,000 characters) is sent by email to the

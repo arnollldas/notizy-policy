@@ -2,7 +2,7 @@
 
 > 🇬🇧 English speaker? Read the [Privacy Policy in English](./PRIVACY.md).
 
-Stand: 24.07.2026
+Stand: 26.09.2026
 
 ## Verantwortlicher
 
@@ -26,7 +26,27 @@ gespeichert, bis du sie selbst löschst oder die Erweiterung
 deinstallierst; beim Deinstallieren werden sie automatisch und
 vollständig vom Gerät entfernt.
 
-## 2. Optionale Google-Anmeldung
+## 2. Schwebende Notiz (Anpinnen an den Bildschirm)
+
+Pinnst du eine Notiz über den Stecknadel-Knopf an den Bildschirm, zeigt Notizy sie als
+frei verschiebbares Fenster über der gerade geöffneten Webseite an, unabhängig davon,
+welche Seite das ist. Dafür braucht die Erweiterung technisch Zugriff auf jede von dir
+besuchte Webseite (Berechtigung „Auf alle Websites zugreifen").
+
+- **Was dabei NICHT passiert:** Notizy liest, speichert oder überträgt zu keinem
+  Zeitpunkt Inhalte der besuchten Webseite selbst (keinen Text, keine Formulardaten,
+  kein Verlauf, keine Cookies fremder Seiten). Das schwebende Fenster ist technisch
+  vollständig von der Webseite isoliert (Shadow DOM) und tauscht keine Daten mit ihr aus.
+- **Was tatsächlich passiert:** Die angepinnte Notiz (Titel, Inhalt, Farbe) sowie welcher
+  Browser-Tab sie gerade anzeigt, werden lokal im Erweiterungs-Speicher deines Browsers
+  (`chrome.storage`) gehalten — das sind ausschließlich deine eigenen Notizdaten, dieselben
+  wie im Gäste-Modus (Abschnitt 1), nur technisch an einer anderen Stelle gespiegelt, damit
+  Popup und schwebendes Fenster denselben Stand zeigen. Auch diese Daten verlassen dein
+  Gerät nicht.
+- Ist keine Notiz angepinnt, greift Notizy nicht auf die Webseite zu, auch wenn die
+  Berechtigung technisch vorhanden ist.
+
+## 3. Optionale Google-Anmeldung
 
 Meldest du dich freiwillig mit deinem Google-Konto an, verarbeitet
 Notizy folgende Daten:
@@ -57,7 +77,7 @@ Notizy folgende Daten:
   gesamten Firestore-Datensatz und beendet die Sitzung unwiderruflich
   in einem Schritt.
 
-## 3. KI-Funktion „Verbessern"
+## 4. KI-Funktion „Verbessern"
 
 Nutzt du den „Verbessern"-Knopf an einer Notiz, wird ausschließlich
 der aktuelle Notiz-Inhalt (auf 6.000 Zeichen begrenzt) an eine
@@ -73,7 +93,7 @@ Text kommt direkt zurück und wird in deine Notiz eingesetzt.
   praxis als weiterer Auftragsverarbeiter.
 - Gegen Missbrauch begrenzt (Anzahl der Anfragen pro Minute limitiert).
 
-## 4. Feedback-Funktion
+## 5. Feedback-Funktion
 
 Sendest du über das Feedback-Formular eine Nachricht ab, wird
 ausschließlich der von dir eingegebene Text (auf 2.000 Zeichen
