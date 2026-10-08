@@ -2,7 +2,7 @@
 
 > 🇬🇧 English speaker? Read the [Privacy Policy in English](./PRIVACY.md).
 
-Stand: 26.09.2026
+Stand: 08.10.2026
 
 ## Verantwortlicher
 
@@ -14,7 +14,7 @@ Kontakt: studio.tablet657@slmail.me
 Notizy lässt sich vollständig ohne Konto nutzen (Gäste-Modus). Meldest
 du dich optional mit Google an, kommen zusätzliche Datenverarbeitungen
 hinzu, die unten einzeln erklärt sind. Es gilt: nur was du aktiv
-nutzt (Anmeldung, KI-Verbessern, Feedback), verlässt dein Gerät.
+nutzt (Anmeldung, Feedback), verlässt dein Gerät.
 
 ## 1. Gäste-Modus (Standard, ohne Anmeldung)
 
@@ -77,21 +77,17 @@ Notizy folgende Daten:
   gesamten Firestore-Datensatz und beendet die Sitzung unwiderruflich
   in einem Schritt.
 
-## 4. KI-Funktion „Verbessern"
+## 4. KI-Funktion „Verbessern" (entfernt)
 
-Nutzt du den „Verbessern"-Knopf an einer Notiz, wird ausschließlich
-der aktuelle Notiz-Inhalt (auf 6.000 Zeichen begrenzt) an eine
-serverlose Funktion (gehostet bei Vercel) und von dort zur
-Verarbeitung an den KI-Anbieter Groq übermittelt. Der verbesserte
-Text kommt direkt zurück und wird in deine Notiz eingesetzt.
+Die KI-Funktion „Verbessern" wurde mit Version 1.6 entfernt. Ab dieser
+Version werden keine Notiz-Inhalte mehr an einen KI-Anbieter oder an
+eine serverlose Funktion zur Textverarbeitung übermittelt.
 
-- Erfordert eine Google-Anmeldung — die Funktion ist angemeldeten
-  Nutzern vorbehalten, um den KI-Zugang vor Missbrauch zu schützen.
-- Die serverlose Funktion speichert den Text nicht dauerhaft, sondern
-  reicht ihn nur zur Verarbeitung weiter.
-- Für die Verarbeitung bei Groq gilt deren eigene Datenschutz-
-  praxis als weiterer Auftragsverarbeiter.
-- Gegen Missbrauch begrenzt (Anzahl der Anfragen pro Minute limitiert).
+Für ältere Versionen (bis 1.5.1) galt: Nutzte man den „Verbessern"-
+Knopf, wurde der aktuelle Notiz-Inhalt (auf 6.000 Zeichen begrenzt)
+über eine serverlose Funktion (Vercel) an den KI-Anbieter Groq
+übermittelt und nicht dauerhaft gespeichert. Die Funktion erforderte
+eine Google-Anmeldung.
 
 ## 5. Feedback-Funktion
 
@@ -108,8 +104,8 @@ keine sonstigen persönlichen Daten automatisch mitgeschickt.
   Notizen oder bis „Meine Daten löschen" genutzt wird.
 - Anmelde-Token im Browser: bis zum Abmelden (wird währenddessen
   automatisch erneuert).
-- KI-Verbessern-Text: nicht dauerhaft gespeichert, nur zur
-  Verarbeitung weitergereicht.
+- KI-Verbessern-Text (nur Versionen bis 1.5.1): nicht dauerhaft
+  gespeichert, nur zur Verarbeitung weitergereicht.
 
 ## Deine Rechte
 
@@ -126,9 +122,11 @@ wende dich an die unten stehende Kontaktadresse.
   angemeldeter Nutzer.
 - **Google (Firebase Authentication / Google Sign-In)** — Anmeldung
   bei optionaler Nutzung des Kontos.
-- **Vercel** — serverlose Funktionen (Anmelde-Token beim Login und
-  KI-Proxy für „Verbessern"); Verarbeitung in der EU-Region Frankfurt.
-- **Groq** — Verarbeitung von Texten für die „Verbessern"-Funktion.
+- **Vercel** — serverlose Funktion (Anmelde-Token beim Login; in
+  Versionen bis 1.5.1 zusätzlich KI-Proxy für „Verbessern");
+  Verarbeitung in der EU-Region Frankfurt.
+- **Groq** — Verarbeitung von Texten für die „Verbessern"-Funktion
+  (nur Versionen bis 1.5.1, seit Version 1.6 nicht mehr genutzt).
 - **EmailJS** — Versand von Feedback-Nachrichten per E-Mail.
 
 ## Kontakt

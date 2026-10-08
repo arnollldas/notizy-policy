@@ -2,7 +2,7 @@
 
 > 🇩🇪 Deutschsprachig? Zur [Datenschutzerklärung auf Deutsch](./DATENSCHUTZ.md).
 
-Last updated: 2026-09-26
+Last updated: 2026-10-08
 
 ## Data Controller
 
@@ -13,8 +13,8 @@ Contact: studio.tablet657@slmail.me
 
 Notizy can be used entirely without an account (guest mode). If you
 optionally sign in with Google, additional processing applies, as
-explained below. Only what you actively use (sign-in, AI "Enhance",
-feedback) ever leaves your device.
+explained below. Only what you actively use (sign-in, feedback)
+ever leaves your device.
 
 ## 1. Guest mode (default, no sign-in)
 
@@ -72,21 +72,16 @@ the following data:
 - **"Delete my data"** in the account menu permanently removes your
   entire Firestore record and ends the session in one step.
 
-## 4. AI "Enhance" feature
+## 4. AI "Enhance" feature (removed)
 
-When you use the "Enhance" button on a note, only the current note
-content (capped at 6,000 characters) is sent to a serverless function
-(hosted on Vercel) and forwarded from there to the AI provider Groq
-for processing. The improved text is returned directly and inserted
-into your note.
+The AI "Enhance" feature was removed in version 1.6. From this version
+on, no note content is sent to an AI provider or to a serverless
+function for text processing.
 
-- Requires a Google sign-in — the feature is available to signed-in
-  users only, to protect AI access from abuse.
-- The serverless function does not permanently store the text — it
-  only relays it for processing.
-- Processing at Groq is subject to Groq's own privacy practices as
-  an additional processor.
-- Rate-limited against abuse (number of requests per minute is capped).
+For older versions (up to 1.5.1): using the "Enhance" button sent the
+current note content (capped at 6,000 characters) through a serverless
+function (Vercel) to the AI provider Groq and was not permanently
+stored. The feature required a Google sign-in.
 
 ## 5. Feedback feature
 
@@ -102,8 +97,8 @@ other personal data are sent automatically.
   "Delete my data".
 - Sign-in token in the browser: until you sign out (refreshed
   automatically while signed in).
-- AI "Enhance" text: not permanently stored, only relayed for
-  processing.
+- AI "Enhance" text (versions up to 1.5.1 only): not permanently
+  stored, only relayed for processing.
 
 ## Your rights
 
@@ -119,9 +114,11 @@ below.
   notes.
 - **Google (Firebase Authentication / Google Sign-In)** — authentication
   when optionally using an account.
-- **Vercel** — serverless functions (sign-in token at login and AI
-  proxy for "Enhance"); processed in the EU region Frankfurt.
-- **Groq** — text processing for the "Enhance" feature.
+- **Vercel** — serverless function (sign-in token at login; in
+  versions up to 1.5.1 also the AI proxy for "Enhance"); processed in
+  the EU region Frankfurt.
+- **Groq** — text processing for the "Enhance" feature (versions up
+  to 1.5.1 only, no longer used since version 1.6).
 - **EmailJS** — sending feedback messages by email.
 
 ## Contact
